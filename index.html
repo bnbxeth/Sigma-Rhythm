@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sigma-Rhythm | Premium 3D Visualizer</title> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        
+        <button id="startButton">
+            <span class="emoji">▶️</span>
+            <br>
+            <span class="text">START</span>
+        </button>
+        
+        <button id="musicToggle" class="control-button">🔊</button>
+
+        <audio id="backgroundMusic" loop> 
+            <source src="assets/sigma_vibe.mp3" type="audio/mp3"> 
+            Your browser does not support the audio element.
+        </audio>
+
+    </div>
+
+    <script>
+        const numberOfCircles = 20;
+        const container = document.querySelector('.container');
+        const startButton = document.getElementById('startButton');
+        const music = document.getElementById('backgroundMusic');
+        const musicToggle = document.getElementById('musicToggle'); // NEW: Music Toggle Element
+
+        let isMusicPlaying = false; // To track the state
+
+        function createCircles() {
+            for (let i = 0; i <= numberOfCircles; i++) {
+                const circle = document.createElement('div');
+                circle.className = 'circle';
+                circle.style.setProperty('--i', i);
+                container.appendChild(circle);
+            }
+        }
+
+        createCircles();
+
+        // 1. START BUTTON LOGIC
+        startButton.addEventListener('click', () => {
+            
+            // Play Music
+            music.volume = 0.5;
+            music.play().catch(error => {
+                console.log("Audio playback started by user interaction.");
+            });
+            isMusicPlaying = true; // Update state
+
+            // Hide Start Button
+            startButton.style.opacity = '0';
+            startButton.style.pointerEvents = 'none';
+            
+            // Show Music Toggle Button
+            musicToggle.style.opacity = '1'; // NEW
+            musicToggle.style.pointerEvents = 'auto'; // NEW
+            
+            // Activate the Animation
+            const circles = document.querySelectorAll('.circle');
+            circles.forEach(circle => {
+                circle.classList.add('animate-start');
+            });
+            
+            container.classList.add('animation-active');
+        });
+
+        // 2. MUSIC TOGGLE LOGIC (NEW)
+        musicToggle.addEventListener('click', () => {
+            if (isMusicPlaying) {
+                music.pause();
+                musicToggle.textContent = '🔇'; // Show Mute Icon
+                isMusicPlaying = false;
+            } else {
+                music.play();
+                musicToggle.textContent = '🔊'; // Show Sound Icon
+                isMusicPlaying = true;
+            }
+        });
+
+    </script>
+</body>
+</html>

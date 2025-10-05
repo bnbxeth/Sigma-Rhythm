@@ -1,0 +1,181 @@
+/* Define global variables: Futuristic Neon Blue Theme (Same) */
+:root {
+    --main-color: #00d4ff; 
+    --shadow-color-light: rgba(0, 212, 255, 0.5);
+    --shadow-color-dark: rgba(0, 0, 0, 0.8);
+    --main-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ... (Global Reset & Body Styling - Same) ... */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
+    overflow: hidden;
+    perspective: 1200px; 
+    font-family: 'Arial', sans-serif;
+}
+
+/* Container Styling (Same) */
+.container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: top 1s ease-in-out, transform 1s ease-in-out;
+}
+.container.animation-active {
+    top: 5%; 
+    transform: translateY(0);
+}
+
+/* ---------------------------------------------------------------------- */
+/* NEW: Music Toggle Button Styling (Fixed Position) */
+/* ---------------------------------------------------------------------- */
+#musicToggle {
+    position: fixed; /* Fixed position relative to viewport */
+    top: 20px;
+    right: 20px;
+    
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--main-color);
+    color: var(--main-color);
+    font-size: 1.5em;
+    
+    cursor: pointer;
+    z-index: 200; /* Must be above everything else */
+    
+    /* Initially hidden and non-interactive */
+    opacity: 0; 
+    pointer-events: none;
+    
+    /* Smooth Transition for showing/hiding */
+    transition: opacity 0.5s ease;
+    
+    /* Subtle Glow */
+    box-shadow: 0 0 10px var(--main-color);
+    
+    /* Ensures emoji/text is centered */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#musicToggle:hover {
+    background: var(--main-color);
+    box-shadow: 0 0 20px var(--main-color);
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* UI: Start Button Styling (Same) */
+/* ---------------------------------------------------------------------- */
+#startButton {
+    width: 160px; 
+    height: 160px;
+    border-radius: 50%; 
+    background: rgba(0, 0, 0, 0.7); 
+    border: 3px solid var(--main-color);
+    color: var(--main-color); 
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 40px var(--main-color); 
+    transition: all 0.5s ease-out; 
+    z-index: 100; 
+    position: relative;
+    line-height: 1;
+}
+
+/* Styling the Emoji */
+.emoji {
+    font-size: 3.5em; 
+    color: #fff; 
+    text-shadow: 0 0 5px var(--main-color);
+}
+
+/* Styling the Text */
+.text {
+    font-size: 1.1em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--main-color); 
+}
+
+/* Hover Effect */
+#startButton:hover {
+    background: var(--main-color);
+    color: #000; 
+    box-shadow: 0 0 5px #fff, 0 0 25px var(--main-color), 0 0 70px var(--main-color);
+    transform: scale(1.05);
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* 3D Visualizer Styling (Core Animation - Same) */
+/* ---------------------------------------------------------------------- */
+.circle {
+    position: absolute;
+    background: transparent;
+    width: calc(var(--i) * 2.5vmin); 
+    aspect-ratio: 1; 
+    border-radius: 50%; 
+    border: 3px solid var(--main-color);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d; 
+    -webkit-transform: rotateX(70deg) translateZ(0px) translateY(0);
+    transform: rotateX(70deg) translateZ(0px) translateY(0);
+    opacity: 0; 
+    box-shadow: none;
+    transition: opacity 1s ease-out;
+}
+
+.circle.animate-start {
+    opacity: 1; 
+    -webkit-animation: animate 3s ease-in-out calc(var(--i) * 0.08s) infinite;
+    animation: animate 3s ease-in-out calc(var(--i) * 0.08s) infinite;
+    box-shadow: 0 0 15px var(--shadow-color-light),
+    inset 0 0 15px var(--shadow-color-light);
+}
+
+/* Keyframes Animation */
+@-webkit-keyframes animate {
+    0%, 100% {
+        -webkit-transform: rotateX(70deg) translateZ(50px) translateY(0);
+        filter: hue-rotate(0deg); 
+    }
+    50% {
+        -webkit-transform: rotateX(70deg) translateZ(50px) translateY(-50vmin);
+        filter: hue-rotate(360deg); 
+    }
+}
+
+@keyframes animate {
+    0%, 100% {
+        transform: rotateX(70deg) translateZ(50px) translateY(0);
+        filter: hue-rotate(0deg); 
+    }
+    50% {
+        transform: rotateX(70deg) translateZ(50px) translateY(-50vmin);
+        filter: hue-rotate(360deg); 
+    }
+}
