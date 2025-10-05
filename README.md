@@ -49,7 +49,7 @@ The accompanying audio file (`sigma_vibe.mp3`) is a placeholder track used solel
 ## ©️ License and Credit
 
   * **Code:** This project is licensed under the **Apache-2.0 License**.
-  * **Developer & Copyright Holder:** Maheshwar Chandra Roy ([bnbxeth](https://www.google.com/search?q=https://github.com/bnbxeth))
+  * **Developer & Copyright Holder:** Maheshwar Chandra Roy ([bnbxeth](https://github.com/bnbxeth))
 
 ### 🎶 Music Credit
 
