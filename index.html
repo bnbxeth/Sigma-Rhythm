@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sigma-Rhythm | Premium 3D Visualizer</title> 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -24,14 +25,24 @@
 
     </div>
 
+    <footer class="footer-bar">
+        <span class="license-text">
+            © 2025 | <strong class="project-name">Sigma-Rhythm</strong> by Maheshwar Chandra Roy. Licensed under <a href="https://github.com/bnbxeth/Sigma-Rhythm/blob/main/LICENSE" target="_blank" class="license-link" title="Read full MIT License">MIT</a>.
+        </span>
+        
+        <a href="https://www.facebook.com/maheshwar.chandra.roy.2025" target="_blank" class="developer-link" title="Developer Profile (Maheshwar Chandra Roy)">
+            <i class="fab fa-facebook-f"></i> 
+        </a>
+    </footer>
+
     <script>
         const numberOfCircles = 20;
         const container = document.querySelector('.container');
         const startButton = document.getElementById('startButton');
         const music = document.getElementById('backgroundMusic');
-        const musicToggle = document.getElementById('musicToggle'); // NEW: Music Toggle Element
+        const musicToggle = document.getElementById('musicToggle'); 
 
-        let isMusicPlaying = false; // To track the state
+        let isMusicPlaying = false; 
 
         function createCircles() {
             for (let i = 0; i <= numberOfCircles; i++) {
@@ -52,15 +63,15 @@
             music.play().catch(error => {
                 console.log("Audio playback started by user interaction.");
             });
-            isMusicPlaying = true; // Update state
+            isMusicPlaying = true; 
 
             // Hide Start Button
             startButton.style.opacity = '0';
             startButton.style.pointerEvents = 'none';
             
             // Show Music Toggle Button
-            musicToggle.style.opacity = '1'; // NEW
-            musicToggle.style.pointerEvents = 'auto'; // NEW
+            musicToggle.style.opacity = '1'; 
+            musicToggle.style.pointerEvents = 'auto'; 
             
             // Activate the Animation
             const circles = document.querySelectorAll('.circle');
@@ -71,7 +82,7 @@
             container.classList.add('animation-active');
         });
 
-        // 2. MUSIC TOGGLE LOGIC (NEW)
+        // 2. MUSIC TOGGLE LOGIC
         musicToggle.addEventListener('click', () => {
             if (isMusicPlaying) {
                 music.pause();
