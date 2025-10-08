@@ -42,10 +42,73 @@ body {
 }
 
 /* ---------------------------------------------------------------------- */
-/* NEW: Music Toggle Button Styling (Fixed Position) */
+/* Footer Bar Styling */
+/* ---------------------------------------------------------------------- */
+.footer-bar {
+    position: fixed; /* স্ক্রিনের নিচে স্থির থাকবে */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 20px;
+    
+    /* ব্যাকগ্রাউন্ড */
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    
+    z-index: 50; 
+}
+
+.license-text {
+    color: rgba(255, 255, 255, 0.6); 
+    font-size: 0.85em;
+    margin-right: 15px; 
+}
+
+/* Style for the link inside license text */
+.license-link {
+    color: var(--main-color); /* Neon blue color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s;
+}
+
+.license-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Styling for the Facebook Developer Link (Professional Icon) */
+.developer-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%; /* গোল বাটন */
+    background: var(--main-color); /* নিয়ন নীল ব্যাকগ্রাউন্ড */
+    color: #000; /* কালো আইকন */
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: var(--main-transition);
+    
+    /* নিয়ন গ্লো এফেক্ট */
+    box-shadow: 0 0 5px var(--main-color), 0 0 10px var(--main-color);
+}
+
+.developer-link:hover {
+    background: #fff; 
+    color: var(--main-color); 
+    box-shadow: 0 0 15px var(--main-color), 0 0 30px var(--main-color);
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Music Toggle Button Styling */
 /* ---------------------------------------------------------------------- */
 #musicToggle {
-    position: fixed; /* Fixed position relative to viewport */
+    position: fixed; 
     top: 20px;
     right: 20px;
     
@@ -59,19 +122,15 @@ body {
     font-size: 1.5em;
     
     cursor: pointer;
-    z-index: 200; /* Must be above everything else */
+    z-index: 200; 
     
-    /* Initially hidden and non-interactive */
     opacity: 0; 
     pointer-events: none;
     
-    /* Smooth Transition for showing/hiding */
     transition: opacity 0.5s ease;
     
-    /* Subtle Glow */
     box-shadow: 0 0 10px var(--main-color);
     
-    /* Ensures emoji/text is centered */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,7 +143,7 @@ body {
 
 
 /* ---------------------------------------------------------------------- */
-/* UI: Start Button Styling (Same) */
+/* UI: Start Button Styling */
 /* ---------------------------------------------------------------------- */
 #startButton {
     width: 160px; 
